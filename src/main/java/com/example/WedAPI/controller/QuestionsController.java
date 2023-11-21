@@ -17,9 +17,9 @@ public class QuestionsController {
     @Autowired
     private IQuestionsRepository iQuestionsRepository;
 
-    //Dùng để lấy danh sách Quiz thuộc 1 đề truyền vào
-    @GetMapping("/getQsQuizId/{categoryId}")
-    public List<Questions> getAllCategories(@PathVariable Long categoryId) {
-        return iQuestionsRepository.findQByQuizId(categoryId);
+    //Dùng để lấy danh sách Questions thuộc 1 đề(quiz) truyền vào
+    @GetMapping("/getQsQuizId/{quizId}")
+    public List<Questions> getAllCategories(@PathVariable Long quizId) {
+        return iQuestionsRepository.findQByQuizId(quizId);
     }
 }

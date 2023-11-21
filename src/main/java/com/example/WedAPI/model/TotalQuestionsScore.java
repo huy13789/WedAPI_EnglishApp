@@ -21,7 +21,7 @@ public class TotalQuestionsScore {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id", nullable = false)
-    private Questions quiz;
+    private QuestionsScore quiz;
 
     @Column(name = "total_score", nullable = false)
     private int totalScore;
