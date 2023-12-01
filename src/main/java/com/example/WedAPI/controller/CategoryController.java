@@ -21,7 +21,7 @@ public class CategoryController {
     private CategoryService categoryService;
     @Autowired
     private QuizService quizService ;
-    @GetMapping("/getall")
+    @GetMapping("/getall") //reading
     public List<Category> getAllCategories() {
         return categoryService.CATEGORY_LIST_READING();
     }
