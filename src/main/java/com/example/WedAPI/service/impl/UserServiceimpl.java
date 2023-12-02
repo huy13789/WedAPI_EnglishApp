@@ -21,6 +21,16 @@ public class UserServiceimpl implements UserService {
     private JwtService jwtService;
 
     @Override
+    public void save(User user) {
+        userRepository.save(user);
+        Long userId = userRepository.getUserIdByUsername(user.getUsername());
+        Long roleId = roleRepository.getRoleIdByName("User");
+        if(roleId != 0 && userId != 0){
+            userRepository.addRoleToUser(userId, roleId);
+        }
+    }
+
+    @Override
     public User saveUser(User user) {
         user.setPassword(new
                 BCryptPasswordEncoder().encode(user.getPassword()));
@@ -34,8 +44,13 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
+    public void deleteUserById(long id) {
+        this.userRepository.deleteById(id);
+    }
+
+    @Override
     public List<User> getAllUsers() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override

@@ -24,5 +24,5 @@ import lombok.*;
     private QuestionsScore quiz;
 
     @Column(name = "total_score", nullable = false)
-    private int totalScore;
+    private double totalScore;
 }

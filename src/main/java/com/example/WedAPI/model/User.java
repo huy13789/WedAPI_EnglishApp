@@ -55,9 +55,6 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
-    private List<QuestionsScore> scoresQuizzes;
-
-    @OneToMany(mappedBy = "user")
     private List<TotalQuestionsScore> totalScoresQuizzes;
 
 }
