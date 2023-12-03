@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceimpl implements UserService {
@@ -55,7 +56,13 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        return null;
+        Optional<User> optional = userRepository.findById(id);
+        if(optional.isPresent())
+        {
+            return optional.get();
+        } else {
+            throw new RuntimeException("User not found for id " + id);
+        }
     }
 
     @Override

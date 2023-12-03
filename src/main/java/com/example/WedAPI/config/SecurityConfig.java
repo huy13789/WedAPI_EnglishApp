@@ -32,12 +32,13 @@ public class SecurityConfig {
                 // Cấu hình truy cập
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/css/**", "/js/**", "/fonts/**", "/img/**",
-                                        "/", "/register", "/error", "/product", "/contact", "/blog",
-                                        "/product/category/**", "/home", "/product/search",
-                                        "/product/productDetail/**", "/product/page/**").permitAll()  // Cho phép truy cập tài nguyên tĩnh
+                                .requestMatchers("/css/**", "/js/**","/fonts/**", "/img/**"
+                                        ,"/","/register","/error", "/product", "/contact","/blog",
+                                        "/product/category/{name}","/home" ,"product/search",
+                                        "product/productDetail/{id}", "/product/page/{pageNo}", "/account/edit/{id}").permitAll()  // Cho phép truy cập tài nguyên tĩnh
                                 .requestMatchers("/admin/login", "/admin/login?error=true").permitAll()  // Truy cập không xác thực đến trang đăng nhập
                                 // Xác thực cho '/admin/**' (nếu cần)
+                                //.requestMatchers("/admin/**").hasAuthority("Admin")
                                 // .requestMatchers("/admin/**").authenticated()
                                 .anyRequest().permitAll()  // Cho phép tất cả yêu cầu khác
                 )
